@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Individualize your input</h1>
+<div mat-dialog-content>
+  <section class="example-section">
+    <span class="example-list-section">
+      <mat-checkbox
+        class="example-margin"
+        [checked]="data.allComplete"
+        [color]="data.task.color"
+        [indeterminate]="someComplete()"
+        (change)="setAll($event.checked)"
+      >
+        {{ tempdata.name }}
+      </mat-checkbox>
+    </span>
+    <span class="example-list-section">
+      <ul>
+        <li *ngFor="let subtask of tempdata.subtasks">
+          <mat-checkbox
+            [(ngModel)]="subtask.completed" 
+            [color]="subtask.color"
+            (ngModelChange)="updateAllComplete()"
+          >
+            {{ subtask.name }}
+          </mat-checkbox>
+        </li>
+      </ul>
+    </span>
+  </section>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>
+    Ok
+  </button>
+</div>

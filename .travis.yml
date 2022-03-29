@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - '10.6.0'
+branches:
+  only:
+    - master
+install:
+  - npm install
+script:
+  - npm run build:github
+after_script:
+  - npm run publish:github
+cache:
+  directories:
+    - node_modules
+env:
+  global:
+    - GH_REF: github.com/stbui/angular-material-app.git

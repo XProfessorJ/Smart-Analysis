@@ -1,0 +1,12 @@
+<div class="stbui-search-container">
+  <mat-icon>search</mat-icon>
+  <input
+    #inputRef
+    type="search"
+    autocomplete="off"
+    spellcheck="false"
+    [placeholder]="placeholder"
+    (keyup.enter)="enterUp()"
+    [(ngModel)]="inputValue"
+  />
+</div>

@@ -1,0 +1,37 @@
+.submit-button-group {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.form-check {
+  margin: 0 1rem;
+}
+
+label {
+  display: block;
+}
+
+mat-slide-toggle {
+  margin: 0 2rem;
+}
+
+mat-checkbox {
+  margin-right: 1rem;
+}
+
+mat-form-field {
+  padding-right: 1rem;
+}
+
+.mat-form-field {
+  margin-right: 4px;
+}
+
+table {
+  width: 100%;
+}
+th {
+  text-align: left;
+  padding: 1rem;
+}

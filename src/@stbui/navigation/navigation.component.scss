@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+.navigation-container {
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+}

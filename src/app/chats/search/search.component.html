@@ -1,0 +1,215 @@
+<mat-card>
+  <mat-card-title>Create new Search</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <h3>Input</h3>
+      <mat-form-field class="display-block">
+        <input
+          name="userStory"
+          formControlName="userStory"
+          matInput
+          placeholder="User Story*"
+        />
+      </mat-form-field>
+      <mat-form-field class="display-block">
+        <mat-select placeholder="System*" formControlName="system">
+          <mat-option value="system A">System A</mat-option>
+          <mat-option value="system B">System B</mat-option>
+          <mat-option value="system C">System C</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="display-block">
+        <mat-select placeholder="Param*" formControlName="param">
+          <mat-option value="Param A">Param A</mat-option>
+          <mat-option value="Param B">Param B</mat-option>
+          <mat-option value="Param C">Param C</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          name="index"
+          matInput
+          type="number"
+          placeholder="Pass rate"
+          formControlName="number"
+        />
+      </mat-form-field>
+      <button mat-mini-fab color="warn">
+        <mat-icon mat-raised-button (click)="openDialog()">add</mat-icon>
+      </button>
+
+      <!-- <section class="example-section">
+        <span class="example-list-section">
+          <mat-checkbox
+            class="example-margin"
+            [checked]="allComplete"
+            [color]="task.color"
+            [indeterminate]="someComplete()"
+            (change)="setAll($event.checked)"
+          >
+            {{ task.name }}
+          </mat-checkbox>
+        </span>
+        <span class="example-list-section">
+          <ul>
+            <li *ngFor="let subtask of task.subtasks">
+              <mat-checkbox
+                [(ngModel)]="subtask.completed"
+                [color]="subtask.color"
+                (ngModelChange)="updateAllComplete()"
+              >
+                {{ subtask.name }}
+              </mat-checkbox>
+            </li>
+          </ul>
+        </span>
+      </section> -->
+
+      <!-- <h3>Output</h3> -->
+      <!-- <mat-checkbox
+        formControlName="disableResult1"
+        [formControl]="outputSelect1"
+      ></mat-checkbox> -->
+      <!-- <mat-form-field class="display-block">
+        <mat-select
+          formControlName="result1"
+          [disabled]="!outputSelect1.value"
+          placeholder="Result 1"
+        >
+          <mat-option value="system A">Pie Chart</mat-option>
+          <mat-option value="system B">Bar Chart</mat-option>
+          <mat-option value="system C">Line Chart</mat-option>
+          <mat-option value="system C">Table</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <!-- <mat-checkbox
+        formControlName="disableResult2"
+        [formControl]="outputSelect2"
+      ></mat-checkbox> -->
+      <!-- <mat-form-field class="display-block">
+        <mat-select
+          formControlName="result2"
+          [disabled]="!outputSelect2.value"
+          placeholder="Result 2"
+        >
+          <mat-option value="system A">Pie Chart</mat-option>
+          <mat-option value="system B">Bar Chart</mat-option>
+          <mat-option value="system C">Line Chart</mat-option>
+          <mat-option value="system C">Table</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <div class="submit-button-group">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!profileForm.valid"
+        >
+          Search
+        </button>
+        <mat-slide-toggle color="primary">Remember </mat-slide-toggle>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<br />
+
+<mat-tab-group mat-align-tabs="start" animationDuration="2000ms">
+  <mat-tab label="Table View">
+    <table cdk-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container cdkColumnDef="oppmId">
+        <th cdk-header-cell *cdkHeaderCellDef>oppmId</th>
+        <td cdk-cell *cdkCellDef="let element">{{ element.oppmId }}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="userStoryId">
+        <th cdk-header-cell *cdkHeaderCellDef>userStoryId</th>
+        <td cdk-cell *cdkCellDef="let element">
+          {{ element.userStoryId }}
+        </td>
+      </ng-container>
+      <!-- Name Column -->
+      <ng-container cdkColumnDef="userStoryStatus">
+        <th cdk-header-cell *cdkHeaderCellDef>userStoryStatus</th>
+        <td cdk-cell *cdkCellDef="let element">
+          {{ element.userStoryStatus }}
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container cdkColumnDef="summary">
+        <th cdk-header-cell *cdkHeaderCellDef>summary</th>
+        <td cdk-cell *cdkCellDef="let element">{{ element.summary }}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="reporter">
+        <th cdk-header-cell *cdkHeaderCellDef>reporter</th>
+        <td cdk-cell *cdkCellDef="let element">
+          {{ element.reporter }}
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container cdkColumnDef="fixVersion">
+        <th cdk-header-cell *cdkHeaderCellDef>fixVersion</th>
+        <td cdk-cell *cdkCellDef="let element">{{ element.fixVersion }}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="totalTestCases">
+        <th cdk-header-cell *cdkHeaderCellDef>totalTestCases</th>
+        <td cdk-cell *cdkCellDef="let element">{{ element.totalTestCases }}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="passedTestCases">
+        <th cdk-header-cell *cdkHeaderCellDef>passedTestCases</th>
+        <td cdk-cell *cdkCellDef="let element">
+          {{ element.passedTestCases }}
+        </td>
+      </ng-container>
+      <ng-container cdkColumnDef="failedTestCases">
+        <th cdk-header-cell *cdkHeaderCellDef>failedTestCases</th>
+        <td cdk-cell *cdkCellDef="let element">
+          {{ element.failedTestCases }}
+        </td>
+      </ng-container>
+      <ng-container cdkColumnDef="executeRate">
+        <th cdk-header-cell *cdkHeaderCellDef>executeRate</th>
+        <td cdk-cell *cdkCellDef="let element">{{ element.executeRate }}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="passRate">
+        <th cdk-header-cell *cdkHeaderCellDef>passRate</th>
+        <td cdk-cell *cdkCellDef="let element">{{ element.passRate }}</td>
+      </ng-container>
+
+      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-tab>
+  <mat-tab label="Line Chart View">
+    <ngx-charts-bar-horizontal-2d
+      [view]="view"
+      [scheme]="colorScheme"
+      [schemeType]="schemeType"
+      [results]="multi"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [legendPosition]="legendPosition"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)"
+    >
+    </ngx-charts-bar-horizontal-2d>
+  </mat-tab>
+  <mat-tab label="Pie Chart View">
+    <ngx-charts-pie-grid
+      [view]="viewPie"
+      [scheme]="colorSchemePie"
+      [results]="single"
+      (select)="onSelect($event)"
+    >
+    </ngx-charts-pie-grid>
+  </mat-tab>
+</mat-tab-group>
