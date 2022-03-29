@@ -20,54 +20,58 @@ const routes: Routes = [
   },
   {
     path: "",
-    component: AdminComponent,
-    children: [
-      {
-        path: "",
-        loadChildren: () =>
-          import("./pages/dashboard/dashboard.module").then(
-            (m) => m.DashboardModule
-          ),
-        pathMatch: "full",
-      },
-      {
-        path: "apps/todo/:filter",
-        loadChildren: () =>
-          import("./todo/todo.module").then((m) => m.TodoModule),
-      },
-      {
-        path: "tables",
-        loadChildren: () =>
-          import("./tables/tables.module").then((m) => m.TablesModule),
-      },
-      {
-        path: "forms",
-        loadChildren: () =>
-          import("./forms/forms.module").then((m) => m.FormModule),
-      },
-      {
-        path: "materials",
-        loadChildren: () =>
-          import("./materials/materials.module").then((m) => m.MaterialsModule),
-      },
-      {
-        path: "pages",
-        loadChildren: () =>
-          import("./pages/pages.module").then((m) => m.PagesModule),
-      },
-      {
-        path: "page-layouts",
-        loadChildren: () =>
-          import("./page-layouts/page-layouts.module").then(
-            (m) => m.PageLayoutsModule
-          ),
-      },
-      {
-        path: "apps/chats",
-        loadChildren: () =>
-          import("./chats/chats.module").then((m) => m.ChatsModule),
-      },
-    ],
+    loadChildren: () =>
+      import("./pages/authentication/login/login.module").then(
+        (m) => m.LoginModule
+      ),
+    // component: AdminComponent,
+    // children: [
+    //   {
+    //     path: "",
+    //     loadChildren: () =>
+    //       import("./pages/dashboard/dashboard.module").then(
+    //         (m) => m.DashboardModule
+    //       ),
+    //     pathMatch: "full",
+    //   },
+    //   {
+    //     path: "apps/todo/:filter",
+    //     loadChildren: () =>
+    //       import("./todo/todo.module").then((m) => m.TodoModule),
+    //   },
+    //   {
+    //     path: "tables",
+    //     loadChildren: () =>
+    //       import("./tables/tables.module").then((m) => m.TablesModule),
+    //   },
+    //   {
+    //     path: "forms",
+    //     loadChildren: () =>
+    //       import("./forms/forms.module").then((m) => m.FormModule),
+    //   },
+    //   {
+    //     path: "materials",
+    //     loadChildren: () =>
+    //       import("./materials/materials.module").then((m) => m.MaterialsModule),
+    //   },
+    //   {
+    //     path: "pages",
+    //     loadChildren: () =>
+    //       import("./pages/pages.module").then((m) => m.PagesModule),
+    //   },
+    //   {
+    //     path: "page-layouts",
+    //     loadChildren: () =>
+    //       import("./page-layouts/page-layouts.module").then(
+    //         (m) => m.PageLayoutsModule
+    //       ),
+    //   },
+    //   {
+    //     path: "apps/chats",
+    //     loadChildren: () =>
+    //       import("./chats/chats.module").then((m) => m.ChatsModule),
+    //   },
+    // ],
   },
   {
     path: "home",
