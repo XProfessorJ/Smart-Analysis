@@ -16,10 +16,13 @@ export class ApiService {
     });
   }
 
-  queryStatus(data:any){
+  queryStatus(data: any) {
     return this.httpClient.post(`${this.serverURL}/rpc/compass/queryNow`, {
-      ...data
+      ...data,
     });
   }
 
+  queryHistoryList() {
+    return this.httpClient.get(`${this.serverURL}/rpc/compass/queryInfo`, {});
+  }
 }
