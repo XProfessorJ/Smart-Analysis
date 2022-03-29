@@ -145,6 +145,6 @@ export class LoginComponent implements OnInit {
   }
 
   private afterSignIn() {
-    this.router.navigate(["/apps/chats/search"]);
+    this.router.navigate(["/admin"]);
   }
 }

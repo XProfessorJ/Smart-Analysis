@@ -5,7 +5,7 @@ import { ChatsComponent } from './chats.component';
 import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
-  { path: '', component: ChatsComponent },
+  { path: '', component: SearchComponent },
   { path: 'chat', component: ChatsComponent },
   { path: 'search', component: SearchComponent}
 ];
