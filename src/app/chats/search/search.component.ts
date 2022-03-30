@@ -83,6 +83,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   dataSource;
   multi: any;
   view: any[] = [1000, 500];
+  // view: any[] = [450, 500];
   viewPie: any[] = [400, 400];
   // options
   showXAxis: boolean = true;
@@ -109,8 +110,13 @@ export class SearchComponent implements OnInit, AfterViewInit {
   name: string;
   constructor(public dialog: MatDialog, public apiService: ApiService) {}
 
-  displayedHistoryColumns: string[] = ["position", "name", "weight", "symbol"];
-  dataHistorySource = ELEMENT_DATA;
+  displayedHistoryColumns: string[] = [
+    "id",
+    "platformId",
+    "queryDetails",
+    "queryName",
+  ];
+  dataHistorySource;
   clickedRows = new Set<PeriodicElement>();
 
   private profileForm = new FormGroup({
@@ -131,7 +137,9 @@ export class SearchComponent implements OnInit, AfterViewInit {
   allComplete: boolean = false;
 
   ngOnInit(): void {
-    this.apiService.queryHistoryList().subscribe((data) => console.log(data));
+    this.apiService
+      .queryHistoryList()
+      .subscribe((res: any) => (this.dataHistorySource = res.data));
   }
   ngAfterViewInit(): void {}
   onSubmit() {
