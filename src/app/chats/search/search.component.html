@@ -129,50 +129,38 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="platformId">
-          <th mat-header-cell *matHeaderCellDef>platformId</th>
+          <th mat-header-cell *matHeaderCellDef>Platform Id</th>
           <td mat-cell *matCellDef="let element">{{ element.platformId }}</td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="queryDetails"
           >1
-          <th mat-header-cell *matHeaderCellDef>queryDetails</th>
+          <th mat-header-cell *matHeaderCellDef>Query Details</th>
           <td mat-cell *matCellDef="let element">{{ element.queryDetails }}</td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="queryName">
-          <th mat-header-cell *matHeaderCellDef>queryName</th>
+          <th mat-header-cell *matHeaderCellDef>Query Name</th>
           <td mat-cell *matCellDef="let element">{{ element.queryName }}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedHistoryColumns"></tr>
         <tr
           mat-row
-          (click)="clickedRows.add(row)"
+          (click)="clickedRowF(row)"
           [class.demo-row-is-clicked]="clickedRows.has(row)"
           *matRowDef="let row; columns: displayedHistoryColumns"
         ></tr>
       </table>
-
-      <div>
-        <h3>Click Log</h3>
-      </div>
-
-      <div *ngIf="!clickedRows.size">Clicked rows will be logged here</div>
-
-      <ul>
-        <li *ngFor="let clickedRow of clickedRows">
-          Clicked on {{ clickedRow.name }}
-        </li>
-      </ul>
     </mat-tab>
   </mat-tab-group>
 </mat-card>
 
 <br />
 
-<mat-tab-group mat-align-tabs="start" animationDuration="2000ms">
+<mat-tab-group mat-align-tabs="start" animationDuration="1000ms">
   <mat-tab label="Table View">
     <table cdk-table [dataSource]="dataSource">
       <!-- Position Column -->

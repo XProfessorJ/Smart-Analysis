@@ -118,7 +118,15 @@ export class SearchComponent implements OnInit, AfterViewInit {
   ];
   dataHistorySource;
   clickedRows = new Set<PeriodicElement>();
-
+  clickedRowF(row) {
+    this.clickedRows.clear();
+    this.clickedRows.add(row);
+    this.apiService.queryStatus(row).subscribe((res: any) => {
+      this.dataSource = new ExampleDataSource(res.data.userStoryStatus);
+      this.multi = new LineChartDataModel(res.data).data;
+      this.pieChartData = new PieChartDataModel(res.data).data.pie;
+    });
+  }
   private profileForm = new FormGroup({
     userStory: new FormControl("", [
       Validators.required,
